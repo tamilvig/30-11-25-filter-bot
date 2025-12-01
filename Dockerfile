@@ -1,8 +1,8 @@
 FROM python:3.10.8-slim-buster
 
-# Install git
+# Install git and bash
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git && \
+    apt-get install -y --no-install-recommends git bash && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
