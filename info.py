@@ -29,27 +29,27 @@ ADMINS = [
 OWNER_USERNAME = environ.get(
     "OWNER_USERNAME", "IM_JISSHU"
 )  # without @ or https://t.me/
-USERNAME = environ.get("USERNAME", "")  # ADMIN USERNAME
+USERNAME = environ.get("USERNAME", "https://t.me/cinemacityhub_info")  # ADMIN USERNAME
 
 # Database Channel
 CHANNELS = [
-    int(ch) if id_pattern.search(ch) else ch
+    int(ch) if id_pattern.search(ch) else 
     for ch in environ.get("CHANNELS", "").split()
 ]
 
 # ForceSub Channel & Log Channels
 AUTH_CHANNEL = int(environ.get("AUTH_CHANNEL", "-1003280882224"))
-AUTH_REQ_CHANNEL = int(environ.get("AUTH_REQ_CHANNEL", ""))
+AUTH_REQ_CHANNEL = int(environ.get("AUTH_REQ_CHANNEL", "-1003280882224"))
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", ""))
-LOG_API_CHANNEL = int(environ.get("LOG_API_CHANNEL", ""))
-LOG_VR_CHANNEL = int(environ.get("LOG_VR_CHANNEL", ""))
+LOG_API_CHANNEL = int(environ.get("LOG_API_CHANNEL", "-1003377034411"))
+LOG_VR_CHANNEL = int(environ.get("LOG_VR_CHANNEL", "-1003377034411"))
 
 # MongoDB
 DATABASE_URI = environ.get("DATABASE_URI", "")
 DATABASE_NAME = environ.get("DATABASE_NAME", "Cluster0")
 
 # Files index database url
-FILES_DATABASE = environ.get("FILES_DATABASE", "")
+FILES_DATABASE = environ.get("FILES_DATABASE", "-1003377034411")
 COLLECTION_NAME = environ.get("COLLECTION_NAME", "jisshu")
 
 # Other Channel's
@@ -64,11 +64,11 @@ REQUEST_CHANNEL = (
 MOVIE_UPDATE_CHANNEL = int(environ.get("MOVIE_UPDATE_CHANNEL", "-1001864434358"))
 
 # Added Link Here Not Id
-SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "")
-MOVIE_GROUP_LINK = environ.get("MOVIE_GROUP_LINK", "")
+SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "https://t.me/cinemacityhub_info")
+MOVIE_GROUP_LINK = environ.get("MOVIE_GROUP_LINK", "https://t.me/cinemacityhub_info")
 
 # Verification
-IS_VERIFY = is_enabled("IS_VERIFY", True)
+IS_VERIFY = is_enabled("IS_VERIFY", False)
 # ---------------------------------------------------------------
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/cinemacityhub_info")
 TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/")
