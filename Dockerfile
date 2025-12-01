@@ -1,19 +1,25 @@
-FROM python:3.10.8-slim-buster
+FROM python:3.12-slim
 
-# Install system dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends git \
+# Prevent Python from writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies (optional)
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
-# Set workdir and copy requirements
+# Set work directory
 WORKDIR /app
-COPY requirements.txt ./
+
+# Copy requirements first
+COPY requirements.txt .
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the code and start script
+# Copy bot code
 COPY . .
 
-# Make sure start.sh is executable and has correct line endings
-RUN chmod +x start.sh && sed -i 's/\r$//' start.sh
-
-CMD ["bash", "start.sh"]
+# Run the bot
+CMD ["python", "bot.py"]
